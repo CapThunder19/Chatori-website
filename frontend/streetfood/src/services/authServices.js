@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const signup = async (userdata)=>{
     try{
-        const res = await axios.post(`https://chatori-website.onrender.com/api/auth/signup`, userdata);
+        const res = await axios.post(`/api/auth/signup`, userdata);
         return res.data;
 
     }
@@ -14,7 +14,7 @@ export const signup = async (userdata)=>{
 
 export const login = async (userdata)=>{
     try{
-        const res = await axios.post("https://chatori-website.onrender.com/api/auth/login", userdata)
+        const res = await axios.post("/api/auth/login", userdata)
         return res.data
     }
     catch(err){
