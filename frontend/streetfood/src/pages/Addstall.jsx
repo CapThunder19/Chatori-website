@@ -35,7 +35,7 @@ const AddStall = () => {
 
       const token = localStorage.getItem('token');
 
-      const res = await axios.post('http://localhost:3001/api/stalls', form, {
+      const res = await axios.post('https://chatori-website.onrender.com/api/stalls', form, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`
