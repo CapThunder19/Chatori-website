@@ -4,7 +4,8 @@ import { login } from '../services/authServices';
 import { Link } from "react-router-dom";
 
 const Login = () => {
-    const [form,setform] = useState({email:"", password:""});
+  const [form,setform] = useState({email:"", password:""});
+  const [errorMsg, setErrorMsg] = useState("");
     const navigate = useNavigate();
 
     const Handlechange = (e) => {
@@ -17,12 +18,12 @@ const Login = () => {
     
         console.log("Login response:", res); // 👈 DEBUG
     
-        if (res.token) {
-            localStorage.setItem('token', res.token);
-            navigate('/');
-        } else {
-            alert(res.msg || 'Login Failed'); // 👈 Use error from backend if exists
-        }
+    if (res.token) {
+      localStorage.setItem('token', res.token);
+      navigate('/');
+    } else {
+      setErrorMsg(res.msg || 'Login Failed');
+    }
     }
     
     
@@ -33,6 +34,9 @@ const Login = () => {
         onSubmit={Handlesubmit} 
         className="max-w-md mx-auto mt-16 p-8 bg-white rounded-lg shadow-md"
       >
+        {errorMsg && (
+          <div className="mb-4 text-red-600 text-center font-semibold">{errorMsg}</div>
+        )}
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Login</h2>
     
         <input
