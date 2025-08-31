@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [tailwindcss(),react()],
   server: {
     proxy: {
-    '/api': 'https://chatori-website.onrender.com/',
+      '/api': 'https://chatori-website.onrender.com/',
     },
   },
 })
